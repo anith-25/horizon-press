@@ -1,0 +1,22 @@
+<div>
+    <ul class="nav flex-column nav-pills" style="height: 600px">
+        <li class="nav-item">
+            {% if request.path == "/" %}
+            <a class="nav-link active" href="/">Home</a>
+            {% else %}
+            <a class="nav-link" href="/">Home</a>
+            {% endif %}
+        </li>
+        {% for category in categories %}
+        {% if current_category.id == category.id %}
+        <li class="nav-item">
+            <a class="nav-link active" href="#">{{category.name}}</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "category_detail" category.id %}">{{category.name}}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>

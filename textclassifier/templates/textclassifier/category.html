@@ -1,0 +1,47 @@
+{% extends "textclassifier/base.html" %}
+
+{% load static %}
+
+{% block title %} {{ current_category.name }} {% endblock title %}
+{% block csv %}
+<form class="d-flex" method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-secondary">Download CSV</button>
+</form>
+{% endblock csv %}
+
+{% block body %}
+<div class="container px-4">
+  <div class="row gx-5 gy-3 px-5 py-5" style="height: 600px">
+    {% for sentence in sentences %}
+    <div class="col-md-4">
+      {% if sentence.sentiment == 'POSITIVE' %}
+      <div class="card" style="border-color: #32cd32;">
+        <div class="card-body">
+          <p class="card-text">{{ sentence.sentence|truncatechars:100 }}</p>
+          <div style="float: right; height: 20px; width: 20px; background-color: #32cd32;"></div>
+        </div>
+      </div>
+      {% elif sentence.sentiment == 'NEGATIVE' %}
+      <div class="card" style="border-color: #ff0000;">
+        <div class="card-body">
+          <p class="card-text">{{ sentence.sentence|truncatechars:100 }}</p>
+          <div style="float: right; height: 20px; width: 20px; background-color: #ff0000;"></div>
+        </div>
+      </div>
+      {% elif sentence.sentiment == 'NEUTRAL' %}
+      <div class="card" style="border-color: #808080;">
+        <div class="card-body">
+          <p class="card-text">{{ sentence.sentence|truncatechars:100 }}</p>
+          <div style="float: right; height: 20px; width: 20px; background-color: #808080;"></div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="row">
+    {% include "textclassifier/form.html" %}
+  </div>  
+</div>
+{% endblock body %}
