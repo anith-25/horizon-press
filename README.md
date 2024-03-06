@@ -16,7 +16,7 @@ git clone https://github.com/anith-25/horizon-press.git
 
 2. Install the required dependencies:
 
-pip install -r requirements/requirements.txt
+pip install -r requirements.txt
 
 3. Run Django migrations to set up the database:
 
