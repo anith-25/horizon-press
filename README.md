@@ -12,19 +12,19 @@ This Django application is designed to accept text input from users and perform 
 
 1. Clone the repository:
 
-git clone https://github.com/anith-25/horizon-press.git
+'''git clone https://github.com/anith-25/horizon-press.git'''
 
 2. Install the required dependencies:
 
-pip install -r requirements.txt
+'''pip install -r requirements.txt'''
 
 3. Run Django migrations to set up the database:
 
-python manage.py migrate
+'''python manage.py migrate'''
 
 4. Start the Django development server:
 
-python manage.py runserver
+'''python manage.py runserver'''
 
 
 5. Access the application through your web browser at `http://localhost:8000`.
